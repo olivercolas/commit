@@ -26,7 +26,6 @@ Consider the following commit message:
 1. `type` = feat
 2. `scope` = cart
 3. `message` = Added remove item button
-```
 
 With that in mind, the following flags are available:
 
