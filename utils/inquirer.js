@@ -20,7 +20,7 @@ module.exports = {
     try {
       const { confirmCommitTypeVal } = await inquirer.prompt({
         type: 'confirm',
-        name: 'confirmCommitType',
+        name: 'confirmCommitTypeVal',
         message: 'Would you like to add a commit type?',
       });
 
@@ -80,6 +80,8 @@ module.exports = {
       });
 
       if (!confirmCommitScopeVal) return false;
+
+      return confirmCommitScopeVal;
     } catch (error) {
       logErrorAndExitProcess(error);
     }
