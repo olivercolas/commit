@@ -17,21 +17,20 @@ Then follow prompts to complete your commit message.
 
 ### Advanced Usage
 
-Based on the conventionalcommits specification, a type and scope and message text composes your commit message. 
+Based on the conventionalcommits specification, a type, scope and message composes your commit message. 
 
-Consider the following example:
+Consider the following commit message:
 
-```
-commit message: "feat(cart): Added remove item button"
+> "feat(cart): Added remove item button"
 
-type -> feat
-scope -> cart
-message -> Added remove item button
+1. `type` = feat
+2. `scope` = cart
+3. `message` = Added remove item button
 ```
 
 With that in mind, the following flags are available:
 
-| command | description |
+| Command | Description |
 | ------------- | ------------- |
 | `-t`| Confirms you wish to add a type |
 | `-s` | Confirms you wish to add a scope (this will be ignored if --no-type flag is added) |
