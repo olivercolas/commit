@@ -4,14 +4,29 @@ const { logErrorAndExitProcess } = require('./helpers');
 module.exports = {
   selectStagedFiles: async (files) => {
     try {
-      const answers = await inquirer.prompt({
+      const { filesToCommit } = await inquirer.prompt({
         type: 'checkbox',
         name: 'filesToCommit',
         message: 'What files do you wish to commit?',
         choices: files.map((file) => file.name),
       });
 
-      return answers;
+      return filesToCommit;
+    } catch (error) {
+      logErrorAndExitProcess(error);
+    }
+  },
+  confirmCommitType: async () => {
+    try {
+      const { confirmCommitTypeVal } = await inquirer.prompt({
+        type: 'confirm',
+        name: 'confirmCommitType',
+        message: 'Would you like to add a commit type?',
+      });
+
+      if (!confirmCommitTypeVal) return false;
+
+      return confirmCommitTypeVal;
     } catch (error) {
       logErrorAndExitProcess(error);
     }
@@ -44,8 +59,8 @@ module.exports = {
           message: 'Enter custom commit type',
         });
 
-        if(customCommitType === '') {
-            throw new Error('Custom commit type is empty');
+        if (customCommitType === '') {
+          throw new Error('Custom commit type is empty');
         }
 
         return customCommitType;
@@ -56,31 +71,56 @@ module.exports = {
       logErrorAndExitProcess(error);
     }
   },
-  getCommitScope: async () => {
+  confirmCommitScope: async () => {
     try {
-      const { commitScope } = await inquirer.prompt({
+      const { confirmCommitScopeVal } = await inquirer.prompt({
         type: 'confirm',
-        name: 'commitScope',
+        name: 'confirmCommitScopeVal',
         message: 'Would you like to add a commit scope?',
       });
 
-      return commitScope
+      if (!confirmCommitScopeVal) return false;
+    } catch (error) {
+      logErrorAndExitProcess(error);
+    }
+  },
+  getCommitScope: async () => {
+    try {
+      const { commitScope } = await inquirer.prompt({
+        type: 'input',
+        name: 'commitScope',
+        message: 'Enter commit scope',
+      });
 
-      if (commitScope) {
-        // const { customCommitType } = await inquirer.prompt({
-        //   type: 'input',
-        //   name: 'customCommitType',
-        //   message: 'Enter custom commit type',
-        // });
-
-        // if(customCommitType === '') {
-        //     throw new Error('Custom commit type is empty');
-        // }
-
-        // return customCommitType;
+      if (commitScope === '') {
+        throw new Error('Commit scope is empty');
       }
 
-    //   return commitType;
+      return commitScope;
+    } catch (error) {
+      logErrorAndExitProcess(error);
+    }
+  },
+  getCommitMessage: async () => {
+    try {
+      const { commitMessage } = await inquirer.prompt({
+        type: 'input',
+        name: 'commitMessage',
+        message: 'Enter your commit message',
+      });
+      return commitMessage;
+    } catch (error) {
+      logErrorAndExitProcess(error);
+    }
+  },
+  getPushOption: async () => {
+    try {
+      const { confirmPush } = await inquirer.prompt({
+        type: 'confirm',
+        name: 'confirmPush',
+        message: 'Push to origin?',
+      });
+      return confirmPush;
     } catch (error) {
       logErrorAndExitProcess(error);
     }
