@@ -11,7 +11,6 @@ const {
   getPushOption,
 } = require('../utils/inquirer');
 const { commit, pushToOrigin } = require('../utils/execute');
-const { log } = console;
 
 const args = arg({
   '-t': Boolean,
