@@ -9,7 +9,12 @@ const getCurrentBranch = async () => {
 const commit = (files, type, scope, message) => {
   let gitCommand = `git add ${files.join(' ')} && git commit -m "`;
   if (type) gitCommand += type;
-  if (scope) gitCommand += `(${scope}): `;
+  if (scope) {
+    gitCommand += `(${scope}): `;
+  } else {
+    gitCommand += `: `;
+  }
+
   if (message) gitCommand += `${message}"`;
 
   execCommand(gitCommand, `Couldn't complete commit command`);
