@@ -4,7 +4,7 @@ A cli to conveniently commit using the conventionalcommits.org specification
 
 ### Installation
 ```
-git clone && cd commit && npm i -g
+npm i -g @lioloc/commit
 ```
 
 ### Usage
