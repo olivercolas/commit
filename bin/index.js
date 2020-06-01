@@ -27,8 +27,12 @@ const args = arg({
 
 const run = async () => {
   // ! must add case for when git respository doesn't exist
-  let scope, type, message;
-  (confirmType = true), (confirmScope = true), (confirmPush = true);
+  let scope,
+    type,
+    message,
+    confirmType = true,
+    confirmScope = true,
+    confirmPush = true;
 
   const filesAvailableForCommit = await stagedFiles();
   const filesToCommit = await selectStagedFiles(filesAvailableForCommit);
