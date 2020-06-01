@@ -1,6 +1,6 @@
 # Get started
 
-A cli to conveniently commit using the conventionalcommits.org specification 
+A cli to conveniently commit using the [conventionalcommits.org](https://www.conventionalcommits.org/) specification 
 
 ### Installation
 ```
