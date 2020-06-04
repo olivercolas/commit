@@ -6,12 +6,19 @@ const getCurrentBranch = async () => {
   return await execSilentCommand(gitCommand, `Couldn't get branch name`);
 };
 
-const commit = (files, type, scope, message) => {
-  let gitCommand = `git add ${files.join(' ')} && git commit -m "`;
+const commit = (filesAvailable, files, type, scope, message) => {
+  let filesStr = files.join(' ');
+  let totalFiles = filesAvailable.join(' ').length;
+
+  if(totalFiles === 1) filesStr === '.'
+
+  let gitCommand = `git add ${filesStr} && git commit -m "`;
+
   if (type) gitCommand += type;
+  
   if (scope) {
     gitCommand += `(${scope}): `;
-  } else {
+  } else if(!scope && type) {
     gitCommand += `: `;
   }
 

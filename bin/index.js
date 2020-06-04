@@ -59,7 +59,7 @@ const run = async () => {
 
   message = await getCommitMessage();
 
-  commit(filesToCommit, type, scope, message);
+  commit(filesAvailableForCommit, filesToCommit, type, scope, message);
 
   if (!args['--no-push']) {
     if (!args['-p']) {
