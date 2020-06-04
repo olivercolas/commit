@@ -1,6 +1,6 @@
 {
   "name": "@lioloc/commit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Efficient commits built on the conventional commits specification",
   "author": "olivercolas@live.com",
   "main": "index.js",
